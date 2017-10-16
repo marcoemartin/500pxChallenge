@@ -1,10 +1,12 @@
-from flask import request, render_template, Flask
+from flask import render_template, Flask
+
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "hello world %s" % request.method
+
+@app.route("/home")
+def home():
+    return "Hello world"
 
 
 @app.route("/<name>")
@@ -13,8 +15,11 @@ def basic(name):
 
 
 @app.route("/pics")
+@app.route("/")
 def pics():
-    return render_template("pics.html")
+    pics = ["dropsCity.jpg", "kart.jpg", "splash.jpg"]
+    return render_template("pics.html", pics=pics)
 
-if __name__ =="main":
+
+if __name__ == "main":
     app.run()

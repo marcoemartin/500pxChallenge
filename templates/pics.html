@@ -2,7 +2,13 @@
 <!doctype html>
 <title>Pictures</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"
+
 <body>
-	<img src="static/dropsCity.jpg">
+    <div id="header">Web Gallery | Infinite Scroll</div>
+	{% for item in pics %}	
+    	<ul id="container">  
+			<img class="item" src="{{ url_for('static',filename=['img', item]|join('/') ) }}" />
+    	</ul>
+	{% endfor %}
 </body>
 
